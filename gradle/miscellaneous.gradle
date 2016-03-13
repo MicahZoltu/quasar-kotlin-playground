@@ -1,0 +1,16 @@
+group 'com.zoltu'
+
+mainClassName = 'com.zoltu.MainKt'
+
+defaultTasks 'run'
+
+applicationDefaultJvmArgs = ["-XX:+UseG1GC"]
+
+jar {
+	manifest {
+		attributes(
+			"Implementation-Title": "PoloniexTrader",
+			"Implementation-Vendor": "com.zoltu"
+		)
+	}
+}

@@ -1,0 +1,10 @@
+plugins {
+	id "com.zoltu.git-versioning" version "2.0.6"
+	id "com.zoltu.kotlin" version "1.0.0"
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'application'
+apply from: 'gradle/repositories.gradle'
+apply from: 'gradle/dependencies.gradle'
+apply from: 'gradle/miscellaneous.gradle'
