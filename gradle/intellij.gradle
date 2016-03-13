@@ -1,0 +1,48 @@
+idea {
+	project {
+		ipr {
+			withXml {
+				// hook up IntelliJ gradle integration
+				def xml = '''
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+          </set>
+        </option>
+        <option name="useAutoImport" value="true" />
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+'''
+				def node = it.asNode()
+				node.append(new XmlParser().parseText(xml))
+			}
+		}
+
+		module {
+			iml {
+				withXml {
+					// hook up IntelliJ gradle integration
+					def root = it.asNode()
+					root.@'external.linked.project.id' = project.name
+					root.@'external.linked.project.path' = '$MODULE_DIR$'
+					root.@'external.root.project.path' = '$MODULE_DIR$'
+					root.@'external.system.id' = "GRADLE"
+					root.@'external.system.module.group' = project.group
+					root.@'external.system.module.version' = project.version
+				}
+			}
+		}
+	}
+}

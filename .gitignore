@@ -9,4 +9,9 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+
+# IntelliJ project files (use `./gradlew idea` to regenerate them)
 /.idea/
+*.iml
+*.ipr
+*.iws
