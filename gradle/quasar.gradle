@@ -1,0 +1,33 @@
+def quasarVersion = '0.7.5-SNAPSHOT'
+
+repositories {
+	maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+configurations {
+	quasar
+}
+
+dependencies {
+	compile(group: 'co.paralleluniverse', name: 'quasar-core', version: quasarVersion, classifier: 'jdk8')
+	compile(group: 'co.paralleluniverse', name: 'quasar-kotlin', version: quasarVersion)
+
+	quasar(group: 'co.paralleluniverse', name: 'quasar-core', version: quasarVersion, classifier: 'jdk8', ext: 'jar')
+}
+
+startScripts {
+	doLast {
+		unixScript.text = unixScript.text.replace("${configurations.quasar.singleFile}".replace($/\/$, $/\\/$), $/$$APP_HOME/lib/quasar-core-${quasarVersion}-jdk8.jar/$)
+		windowsScript.text = windowsScript.text.replace("${configurations.quasar.singleFile}", $/%APP_HOME%\lib\quasar-core-${quasarVersion}-jdk8.jar/$)
+	}
+}
+
+tasks.withType(Test) {
+	systemProperty 'co.paralleluniverse.fibers.verifyInstrumentation', 'true'
+	jvmArgs "-javaagent:${configurations.quasar.singleFile}"
+}
+
+applicationDefaultJvmArgs += [
+	"-javaagent:${configurations.quasar.singleFile}",
+	"-Dco.paralleluniverse.fibers.verifyInstrumentation"
+]

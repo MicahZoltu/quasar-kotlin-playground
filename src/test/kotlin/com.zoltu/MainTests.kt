@@ -1,11 +1,12 @@
 package com.zoltu
 
-import kotlin.test.assertEquals
+import org.hamcrest.CoreMatchers
+import org.junit.Assert
 import org.junit.Test
 
 class `Main Tests` {
 	@Test
-	fun `getGreeting returns "Hello world!"`() {
-		assertEquals("Hello world!", getGreeting())
+	fun `doAll yields 10`() {
+		doAll()
 	}
 }

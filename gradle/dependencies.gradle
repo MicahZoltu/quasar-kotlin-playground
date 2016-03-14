@@ -1,3 +1,10 @@
+configurations.all({ configuration ->
+	configuration.resolutionStrategy.with {
+		failOnVersionConflict()
+			.force(group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.0.0')
+	}
+})
+
 dependencies {
 	compile(group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.0.0')
 

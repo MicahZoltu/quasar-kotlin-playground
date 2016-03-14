@@ -4,7 +4,9 @@ mainClassName = 'com.zoltu.MainKt'
 
 defaultTasks 'run'
 
-applicationDefaultJvmArgs = ["-XX:+UseG1GC"]
+applicationDefaultJvmArgs += [
+		"-XX:+UseG1GC"
+]
 
 jar {
 	manifest {
