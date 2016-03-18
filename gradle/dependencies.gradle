@@ -1,12 +1,15 @@
 configurations.all({ configuration ->
 	configuration.resolutionStrategy.with {
 		failOnVersionConflict()
-			.force(group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.0.0')
+			.force(group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.0.1')
+			.force(group: 'org.jetbrains.kotlin', name: 'kotlin-runtime', version: '1.0.1')
 	}
 })
 
 dependencies {
 	compile(group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.0.0')
+	compile(group: 'co.paralleluniverse', name: 'quasar-core', version: '0.7.5-SNAPSHOT', classifier: 'jdk8')
+	compile(group: 'co.paralleluniverse', name: 'quasar-kotlin', version: '0.7.5-SNAPSHOT')
 
 	testCompile(group: 'junit', name: 'junit', version: '4.12')
 	testCompile(group: 'org.jetbrains.kotlin', name: 'kotlin-test', version: '1.0.0')
