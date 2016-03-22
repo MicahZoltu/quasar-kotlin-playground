@@ -1,12 +1,12 @@
 plugins {
 	id "com.zoltu.git-versioning" version "2.0.6"
 	id "com.zoltu.kotlin" version "1.0.1"
+	id "com.zoltu.application-agent" version "1.0.12"
 }
 
 apply plugin: 'kotlin'
 apply plugin: 'application'
 apply plugin: 'idea'
-apply plugin: 'com.zoltu.application-agent'
 apply from: 'gradle/intellij.gradle'
 apply from: 'gradle/repositories.gradle'
 apply from: 'gradle/dependencies.gradle'
