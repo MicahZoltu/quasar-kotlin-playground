@@ -8,8 +8,13 @@ applicationDefaultJvmArgs += [
 		"-XX:+UseG1GC"
 ]
 
-jar {
-	manifest {
+// always run the tests, even if they were recently run
+tasks.withType(Test) {
+	outputs.upToDateWhen { false }
+}
+
+((Jar)jar).with {
+	((Manifest)manifest).with {
 		attributes(
 			"Implementation-Title": "PoloniexTrader",
 			"Implementation-Vendor": "com.zoltu"
